@@ -14,8 +14,13 @@ for index, row in data.iterrows():
     pdf.set_text_color(0, 0, 0)
     pdf.cell(w=0, h=12, txt=row["Topic"], ln=1, align='L')
     pdf.line(10, 21, 200, 21)
+
+    ''' # Add lines to the page with 6mm spacing
+    for l in range(27, 279, 6):
+        pdf.line(10, l, 200, l)'''
+
+    # Set the footer for the Main page
     pdf.line(10, 279, 200, 279)
-    #Add page number
     pdf.ln(257)
     pdf.set_font(family = "Times", style="I", size=8)
     pdf.set_text_color(150, 150, 150)
@@ -23,6 +28,8 @@ for index, row in data.iterrows():
 
     for i in range(row["Pages"]):
         pdf.add_page()
+        pdf.line(10, 21, 200, 21)
+
         # Set the footer for the inner page
         pdf.line(10, 279, 200, 279)
         pdf.ln(272)
